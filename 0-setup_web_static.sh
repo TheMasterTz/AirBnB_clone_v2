@@ -13,3 +13,4 @@ sudo ln -s /data/web_static/current /data/web_static/releases/test/
 sudo chown -R ubuntu:ubuntu /data/
 new_string="server_name _;\n\t\tlocation /hbnb_static/ {\n\t\t\talias /data/web_static/current/;\n\t\t}"
 sudo sed -i "s|server_name\ _;|$new_string|" /etc/nginx/sites-available/default
+sudo service nginx restart
