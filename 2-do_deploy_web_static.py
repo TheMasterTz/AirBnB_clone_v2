@@ -29,9 +29,8 @@ def do_pack():
 
 def do_deploy(archive_path):
     """distributes an archive to the web servers"""
-    if exists(archive_path) is False:
-        return False
-    try:
+
+    if exists(archive_path):
         nameFile = archive_path.split("/")[-1]
         NFile_no_ext = nameFile.split(".")[0]
         path = "/data/web_static/releases/"
@@ -44,5 +43,5 @@ def do_deploy(archive_path):
         run('rm -rf /data/web_static/current')
         run('ln -s {}{}/ /data/web_static/current'.format(path, NFile_no_ext))
         return True
-    except:
-        return False
+
+    return False
