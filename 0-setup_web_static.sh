@@ -5,12 +5,29 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
-sudo mkdir -p /data/web_static/shared/
-sudo mkdir -p /data/web_static/releases/test/
-sudo touch /data/web_static/releases/test/index.html
-echo "It is working" | sudo tee /data/web_static/releases/test/index.html
-sudo ln -s /data/web_static/current /data/web_static/releases/test/
-sudo chown -R ubuntu:ubuntu /data/
-new_string="server_name _;\n\t\tlocation /hbnb_static/ {\n\t\t\talias /data/web_static/current/;\n\t\t}"
-sudo sed -i "s|server_name\ _;|$new_string|" /etc/nginx/sites-available/default
-sudo service nginx restart
+
+# Create folders
+sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
+
+# Create fake html
+echo "
+<html>
+<head>
+</head>
+<body>
+	Holberton School
+</body>
+</html>" | sudo tee -a /data/web_static/releases/test/index.html > /dev/null
+
+# Create symbolic link
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
+
+# Create owner and permissions
+sudo chown -hR ubuntu:ubuntu /data/
+
+# Update nginx configuration content
+new_conf="\\\n\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}"
+sudo sed -i "47i $new_conf" /etc/nginx/sites-available/default
+
+sudo service nginx reload
+sudo service nginx start
