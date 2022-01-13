@@ -28,22 +28,22 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """distributes an archive to the web servers"""
-
+    """deploy web static with fabric"""
     if exists(archive_path) is False:
         return False
+
     try:
-        nameFile = archive_path.split("/")[-1]
-        no_ext = nameFile.split(".")[0]
+        filename = archive_path.split("/")[-1]
+        no_excep = filename.split(".")[0]
         path = "/data/web_static/releases/"
         put(archive_path, '/tmp/')
-        run('sudo mkdir -p {}{}/'.format(path, no_ext))
-        run('sudo tar -xzf /tmp/{} -C {}{}/'.format(nameFile, path, no_ext))
-        run('sudo rm /tmp/{}'.format(nameFile))
-        run('sudo mv {0}{1}/web_static/* {0}{1}/'.format(path, no_ext))
-        run('sudo rm -rf {}{}/web_static'.format(path, no_ext))
+        run('sudo mkdir -p {}{}/'.format(path, no_excep))
+        run('sudo tar -xzf /tmp/{} -C {}{}/'.format(filename, path, no_excep))
+        run('sudo rm /tmp/{}'.format(filename))
+        run('sudo mv {0}{1}/web_static/* {0}{1}/'.format(path, no_excep))
+        run('sudo rm -rf {}{}/web_static'.format(path, no_excep))
         run('sudo rm -rf /data/web_static/current')
-        run('sudo ln -s {}{}/ /data/web_static/current'.format(path, no_ext))
+        run('sudo ln -s {}{}/ /data/web_static/current'.format(path, no_excep))
         return True
     except BaseException:
         return False
