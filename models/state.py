@@ -6,7 +6,6 @@ import models
 from models.base_model import BaseModel, Base
 from models.city import City
 from os import getenv
-import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -24,10 +23,9 @@ else:
         def cities(self):
             """Get a list of all linked Amenity.
             """
-
             cities_List = []
-
-            for cities in models.storage.all(City).values():
-                if cities.place_id == self.id:
-                    cities_List.append(cities)
+            all_cities = models.storage.all(City)
+            for city in all_cities.values():
+                if city.state_id == self.id:
+                    cities_List.append(city)
             return cities_List
