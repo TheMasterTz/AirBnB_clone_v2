@@ -31,11 +31,11 @@ class DBStorage():
         HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
         HBNB_ENV = getenv('HBNB_ENV')
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
-                                        format(HBNB_MYSQL_USER,
-                                                HBNB_MYSQL_PWD,
-                                                HBNB_MYSQL_HOST,
-                                                HBNB_MYSQL_DB),
-                                        pool_pre_ping=True)
+                                      format(HBNB_MYSQL_USER,
+                                             HBNB_MYSQL_PWD,
+                                             HBNB_MYSQL_HOST,
+                                             HBNB_MYSQL_DB),
+                                      pool_pre_ping=True)
         if HBNB_ENV == 'test':
             Base.metadata.drop_all(self.__engine)
 
@@ -52,7 +52,6 @@ class DBStorage():
             res_list = res_list = self.__session.query(cls)
         return {'{}.{}'.format(type(obj).__name__, obj.id): obj
                 for obj in res_list}
-
 
     def save(self):
         """Saves storage dictionary to file"""
