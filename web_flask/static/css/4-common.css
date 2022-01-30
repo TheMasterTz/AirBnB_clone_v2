@@ -1,0 +1,30 @@
+html{
+    position: relative;
+    min-height: 91%;
+}
+body {
+    padding: 0px;
+    margin: 0px;
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif,Helvetica,Arial,sans-serif;
+}
+.container {
+    max-width: 1000px;
+    margin: 30px auto 30px auto;
+}
+
+body::-webkit-scrollbar {
+	width: 9px;
+	background: rgb(243, 243, 243);
+}
+
+body::-webkit-scrollbar-thumb {
+	background: rgb(87, 87, 87);
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-right: 2px solid rgba(34, 34, 34, 0.274);
+}
