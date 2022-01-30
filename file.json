@@ -1,45 +1,40 @@
 {
-    "City.7fed4983-7d1a-4b90-b765-813e73a82b18": {
-        "id": "7fed4983-7d1a-4b90-b765-813e73a82b18",
-        "created_at": "2021-12-22T20:38:39.135154",
-        "updated_at": "2021-12-22T20:38:39.135742",
-        "name": "San_Francisco",
-        "state_id": "hi",
+    "State.2e201638-705a-4838-a3a0-b0249229104a": {
+        "name": "California",
+        "created_at": "2022-01-30T14:31:54.267114",
+        "updated_at": "2022-01-30T14:31:54.267317",
+        "id": "2e201638-705a-4838-a3a0-b0249229104a",
+        "__class__": "State"
+    },
+    "State.750f2a0d-8332-4f5d-bf98-1a4b47593a8f": {
+        "name": "Arizona",
+        "created_at": "2022-01-30T14:31:54.267540",
+        "updated_at": "2022-01-30T14:31:54.267584",
+        "id": "750f2a0d-8332-4f5d-bf98-1a4b47593a8f",
+        "__class__": "State"
+    },
+    "City.cda2db79-1742-4208-a56b-243022cffce9": {
+        "state_id": "2e201638-705a-4838-a3a0-b0249229104a",
+        "name": "Napa",
+        "created_at": "2022-01-30T14:31:54.267779",
+        "updated_at": "2022-01-30T14:31:54.267836",
+        "id": "cda2db79-1742-4208-a56b-243022cffce9",
         "__class__": "City"
     },
-    "Place.0aa4195b-3aad-48b6-8495-1b9d43f2085b": {
-        "id": "0aa4195b-3aad-48b6-8495-1b9d43f2085b",
-        "created_at": "2021-12-22T20:38:39.473101",
-        "updated_at": "2021-12-22T20:38:39.473662",
-        "city_id": "1234-abcd",
-        "user_id": "4321-dcba",
-        "name": "Death Star",
-        "description": "UNLIMITED POWER!!!!!",
-        "number_rooms": 1000000,
-        "number_bathrooms": 1,
-        "max_guest": 607360,
-        "price_by_night": 10,
-        "latitude": 160.0,
-        "longitude": 120.0,
-        "amenity_ids": [
-            "1324-lksdjkl"
-        ],
-        "__class__": "Place"
+    "City.a529e201-f47b-4f68-b826-8e6c113ce253": {
+        "state_id": "2e201638-705a-4838-a3a0-b0249229104a",
+        "name": "Sonoma",
+        "created_at": "2022-01-30T14:31:54.268244",
+        "updated_at": "2022-01-30T14:31:54.268298",
+        "id": "a529e201-f47b-4f68-b826-8e6c113ce253",
+        "__class__": "City"
     },
-    "Amenity.1fa626d2-e4bd-4129-8828-7190849d0b45": {
-        "id": "1fa626d2-e4bd-4129-8828-7190849d0b45",
-        "created_at": "2021-12-22T20:38:39.799916",
-        "updated_at": "2021-12-22T20:38:39.800443",
-        "name": "hi",
-        "__class__": "Amenity"
-    },
-    "Review.41968341-7ad8-412d-b10a-72c69977fb6e": {
-        "id": "41968341-7ad8-412d-b10a-72c69977fb6e",
-        "created_at": "2021-12-22T20:38:40.080759",
-        "updated_at": "2021-12-22T20:38:40.081624",
-        "place_id": "4321-dcba",
-        "user_id": "123-bca",
-        "text": "The srongest in the Galaxy",
-        "__class__": "Review"
+    "City.bd156d0d-83de-4f73-be7c-24c4b6919709": {
+        "state_id": "750f2a0d-8332-4f5d-bf98-1a4b47593a8f",
+        "name": "Page",
+        "created_at": "2022-01-30T14:31:54.268593",
+        "updated_at": "2022-01-30T14:31:54.268643",
+        "id": "bd156d0d-83de-4f73-be7c-24c4b6919709",
+        "__class__": "City"
     }
 }
