@@ -61,18 +61,18 @@ class DBStorage():
         """Adds new object to storage dictionary"""
         self.__session.add(obj)
 
-    def delete(self, obj):
+    def delete(self, obj=None):
         """Deletes object from storage dictionary"""
         if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
-        """
-        Reload objects to current db session
-        """
+        """Reload object to current db session"""
         Base.metadata.create_all(self.__engine)
-        session_fact = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        self.__session = session_fact()
+        session_factory = sessionmaker(
+            bind=self.__engine, expire_on_commit=False)
+        Session = scoped_session(session_factory)
+        self.__session = Session
 
     def close(self):
         """call remove() method on the private session attribute"""
