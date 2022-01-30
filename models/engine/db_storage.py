@@ -49,13 +49,10 @@ class DBStorage():
             objs.extend(self.__session.query(Review).all())
             objs.extend(self.__session.query(User).all())
         else:
-            objs = self.__session.query(eval(cls)).all()
-        dictionary = {}
-        for element in objs:
-            key = '{}.{}'.format(type(element).__name__, element.id)
-            value = element
-            dictionary[key] = value
-        return dictionary
+            res_list = res_list = self.__session.query(cls)
+        return {'{}.{}'.format(type(obj).__name__, obj.id): obj
+                for obj in res_list}
+
 
     def save(self):
         """Saves storage dictionary to file"""
