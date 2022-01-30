@@ -16,38 +16,35 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 
-class DBStorage():
-    """connection with the database"""
-    __engine = None
+class DBStorage:
+    """Interaction to DBStorage"""
+    __engine__ = None
     __session = None
 
-    def __init__(self):
-        """
-        __init__ [summary]
-        """
-        HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
-        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
-        HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
-        HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
-        HBNB_ENV = getenv('HBNB_ENV')
+    def __init__(self,):
+        """initialization method"""
+        user = getenv('HBNB_MYSQL_USER')
+        password = getenv('HBNB_MYSQL_PWD')
+        host = getenv('HBNB_MYSQL_HOST')
+        db = getenv('HBNB_MYSQL_DB')
+        var_env = getenv('HBNB_ENV')
+
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.
-                                      format(HBNB_MYSQL_USER,
-                                             HBNB_MYSQL_PWD,
-                                             HBNB_MYSQL_HOST,
-                                             HBNB_MYSQL_DB),
+                                      format(user, password, host, db),
                                       pool_pre_ping=True)
-        if HBNB_ENV == 'test':
+        if var_env == 'test':
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """Returns a dictionary of models currently in storage"""
+        """Reurns a dictionary of models currently in storage"""
+
         if cls is None:
-            objs = self.__session.query(State).all()
-            objs.extend(self.__session.query(City).all())
-            objs.extend(self.__session.query(Amenity).all())
-            objs.extend(self.__session.query(Place).all())
-            objs.extend(self.__session.query(Review).all())
-            objs.extend(self.__session.query(User).all())
+            obj = self.__session.query(User).all()
+            obj.extend(self.__session.query(City).all())
+            obj.extend(self.__session.query(Amenity).all())
+            obj.extend(self.__session.query(Place).all())
+            obj.extend(self.__session.query(Review).all())
+            obj.extend(self.__session.query(State).all())
         else:
             res_list = res_list = self.__session.query(cls)
         return {'{}.{}'.format(type(obj).__name__, obj.id): obj
@@ -58,7 +55,7 @@ class DBStorage():
         self.__session.commit()
 
     def new(self, obj):
-        """Adds new object to storage dictionary"""
+        """Adds new objects to storage dictionary"""
         self.__session.add(obj)
 
     def delete(self, obj=None):
@@ -75,5 +72,5 @@ class DBStorage():
         self.__session = Session
 
     def close(self):
-        """call remove() method on the private session attribute"""
+        """Remove session"""
         self.__session.close()
