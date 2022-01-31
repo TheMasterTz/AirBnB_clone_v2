@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../static/css/3-header.css" type="text/css" />
     <link rel="stylesheet" href="../static/css/6-filters.css" type="text/css" />
     <link rel="stylesheet" href="../static/css/8-places.css" type="text/css" />
+    <link rel="shortcut icon" href="../static/images/icon.png" type="image/x-icon">
     <title>AirBnb clone</title>
   </head>
   <body>
@@ -17,7 +18,6 @@
       <section class="filters">
         <div class="locations">
           <h3>States</h3>
-          <h4>California, Arizona...</h4>
           <ul class="popover">
             {% for state in states %}
             <li>
@@ -35,7 +35,6 @@
 
         <div class="amenities">
           <h3>Amenities</h3>
-          <h4>Internet, Kitchen...</h4>
           <ul class="popover sublist">
             {% for amenity in amenity|sort(attribute='name') %}
             <li>{{ amenity.name }}</li>
@@ -66,83 +65,19 @@
             </div>
           </div>
           <div class="user">
-            <p><strong>Owner:</strong> John Lennon</p>
+
+            {% for owner in list_owners|unique %}
+              {% if place.user_id == owner.id %}
+              <p><strong>Owner:</strong> {{ owner.first_name }} {{ owner.last_name }}</p>
+              {% endif %}
+            {% endfor %}
+
           </div>
           <div class="description">
-            <p>{{ place.description }}</p>
+            <p>{{ place.description|safe }}</p>
           </div>
         </article>
         {% endfor %}
-
-        <article>
-          <h2>My home</h2>
-          <div class="price_by_night">
-            <p>$80</p>
-          </div>
-          <div class="information">
-            <div class="max_guest">
-              <p>2 Guests</p>
-            </div>
-            <div class="number_rooms">
-              <p>2 Bedrooms</p>
-            </div>
-            <div class="number_bathrooms">
-              <p>1 Bathrooms</p>
-            </div>
-          </div>
-          <div class="user">
-            <p><strong>Owner:</strong> John Lennon</p>
-          </div>
-          <div class="description">
-            <p>This is a lovely 1 bedroom and 1 bathroom apartment that can accommodate 2 people. It locates ata the center of Shanghai and next to subway line1, 1 stop to people Square, 2 stops to bund, 3 stops jingan Temple.</p>
-          </div>
-        </article>
-
-        <article>
-          <h2>Tiny house</h2>
-          <div class="price_by_night">
-            <p>$65</p>
-          </div>
-          <div class="information">
-            <div class="max_guest">
-              <p>4 Guests</p>
-            </div>
-            <div class="number_rooms">
-              <p>2 Bedrooms</p>
-            </div>
-            <div class="number_bathrooms">
-              <p>1 Bathrooms</p>
-            </div>
-          </div>
-          <div class="user">
-            <p><strong>Owner:</strong> Adrienne</p>
-          </div>
-          <div class="description">
-            <p>Our place is a private, affordable stand-alone guest house centrally located just minutes to French Quarters, downtown, the Fair Grounds(Jazz Fest) and City Park. The guest house is a quaint, 400 square ft. with a full bath, mini kitchen, & living room. The extra high ceilings make the home feel more spacious. The sofa converts to a bed also. We have a hand made counter area that adds character to the room and a great porch/deck to relax on and have a glass of Merlot.</p>
-        </article>
-
-				<article>
-					<h2>A suite</h2>
-          <div class="price_by_night">
-            <p>$180</p>
-          </div>
-          <div class="information">
-            <div class="max_guest">
-              <p>2 Guests</p>
-            </div>
-            <div class="number_rooms">
-              <p>2 Bedrooms</p>
-            </div>
-            <div class="number_bathrooms">
-              <p>1 Bathrooms</p>
-            </div>
-          </div>
-          <div class="user">
-            <p><strong>Owner:</strong> Rosa Merlano</p>
-          </div>
-          <div class="description">
-            <p>This is a beautiful suite for people who want privacy and enjoy a wonderful view with the availability of 2 bedrooms and a bathroom, this suite is located in the center of New York.</p>
-				</article>
       </section>
     </div>
     <footer class="footer">Best School</footer>

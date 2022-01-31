@@ -18,11 +18,25 @@ def hbnb():
     places = storage.all("Place").values()
     users = storage.all("User").values()
 
+    list_owners = []
+    list_cities = []
+
+    for state in states:
+        for city in state.cities:
+            list_cities.append(city)
+
+    for place in places:
+        for user in users:
+            if place.user_id == user.id:
+                list_owners.append(user)
+
     return render_template("100-hbnb.html",
                            states=states,
                            places=places,
                            usesr=users,
-                           amenity=amenities)
+                           amenity=amenities,
+                           list_owners=list_owners,
+                           list_cities=list_cities)
 
 
 @app.teardown_appcontext

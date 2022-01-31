@@ -30,7 +30,8 @@ article {
 
 article h2 {
 	font-size: 30px;
-	margin: 15px 0px 0px auto;
+	margin: 15px 0px 5px auto;
+	width: 62%;
 }
 
 div.price_by_night {
@@ -56,6 +57,7 @@ div.information {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	padding-top: 10px;
 }
 
 div.max_guest {

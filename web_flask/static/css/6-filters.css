@@ -71,11 +71,11 @@ h4{
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
-    padding-top:30px;
-    padding-bottom:20px;
-    padding-left:20px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    padding-left: 20px;
     position:relative;
-    margin-top: 32px;
+    margin-top: 42px;
     overflow-y: scroll;
     height: 350px;
 }
