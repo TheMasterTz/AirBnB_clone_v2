@@ -19,27 +19,33 @@
         <div class="locations">
           <h3>States</h3>
           <ul class="popover">
+
             {% for state in states %}
             <li>
               <h2>{{ state.name }}</h2></h2>
               <ul class="sublist">
+
                 {% for city in state.cities|sort(attribute='name') %}
                 <li>{{ city.name }}</li>
                 <li><br /></li>
                 {% endfor %}
+
               </ul>
             </li>
             {% endfor %}
+
           </ul>
         </div>
 
         <div class="amenities">
           <h3>Amenities</h3>
           <ul class="popover sublist">
+
             {% for amenity in amenity|sort(attribute='name') %}
             <li>{{ amenity.name }}</li>
             <li><br /></li>
             {% endfor %}
+
           </ul>
         </div>
         <button>Search</button>

@@ -19,11 +19,6 @@ def hbnb():
     users = storage.all("User").values()
 
     list_owners = []
-    list_cities = []
-
-    for state in states:
-        for city in state.cities:
-            list_cities.append(city)
 
     for place in places:
         for user in users:
@@ -35,8 +30,7 @@ def hbnb():
                            places=places,
                            usesr=users,
                            amenity=amenities,
-                           list_owners=list_owners,
-                           list_cities=list_cities)
+                           list_owners=list_owners)
 
 
 @app.teardown_appcontext
